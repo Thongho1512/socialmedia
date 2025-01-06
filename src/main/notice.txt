@@ -2,6 +2,10 @@ tắt datasource để kết nối mongodb.
 
 thứ tự cấu hình security
 1. tạo file SecurityConfiguration. 
-- cấu hình passwordEncoder
+- cấu hình passwordEncoder.
++ khai báo sử dụng passwordEncode ở securityConfiguuration, lấy ra sử dụng khi tạo
+user mới ở service
 - cấu hình securityfilterchain.
+- ResponseEntity
++ 
 - oauth2

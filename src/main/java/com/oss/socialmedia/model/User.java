@@ -23,7 +23,7 @@ public class User {
     private String username;
     @Indexed(unique = true)
     private String email;
-    private String password; // Should be encrypted (e.g., BCrypt)
+    private String password;
     private String profileImage; // URL to profile image
     private String bio; // Short description
     private String role;
