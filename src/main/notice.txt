@@ -1,0 +1,7 @@
+tắt datasource để kết nối mongodb.
+
+thứ tự cấu hình security
+1. tạo file SecurityConfiguration. 
+- cấu hình passwordEncoder
+- cấu hình securityfilterchain.
+- oauth2
