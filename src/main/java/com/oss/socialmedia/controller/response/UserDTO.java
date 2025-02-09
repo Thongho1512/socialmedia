@@ -1,23 +1,21 @@
 package com.oss.socialmedia.controller.response;
 
-
-
 import java.io.Serializable;
 import java.util.Date;
 
-
+import com.oss.socialmedia.common.Gender;
 
 public class UserDTO implements Serializable {
-    private Long id;
+    private String id;
     private String lastName;
     private String firstName;
     private Date dob;
     private String email;
     private String phoneNumber;
-    private String gender;
+    private Gender gender;
     private String username;
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -41,7 +39,7 @@ public class UserDTO implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
@@ -49,7 +47,7 @@ public class UserDTO implements Serializable {
         this.username = username;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
@@ -73,7 +71,7 @@ public class UserDTO implements Serializable {
         return phoneNumber;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
@@ -84,7 +82,7 @@ public class UserDTO implements Serializable {
     public static class Builder {
         private final UserDTO user = new UserDTO();
 
-        public Builder setId(Long id) {
+        public Builder setId(String id) {
             user.setId(id);
             return this;
         }
@@ -114,7 +112,7 @@ public class UserDTO implements Serializable {
             return this;
         }
 
-        public Builder setGender(String gender) {
+        public Builder setGender(Gender gender) {
             user.setGender(gender);
             return this;
         }
