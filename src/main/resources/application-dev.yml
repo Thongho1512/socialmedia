@@ -27,7 +27,7 @@ openapi:
     title: Backend API document
     version: v1.1.0
     server: http://localhost:${server.port}
-    api-docs: social media
+    api-docs: socialmedia
 
 
 jwt:

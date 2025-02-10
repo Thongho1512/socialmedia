@@ -70,27 +70,7 @@ public class UserServiceImpl implements UserService {
         return getUserPageDTO(page, size, entityPage);
     }
 
-    private UserPageDTO getUserPageDTO(int page, int size, Page<UserEntity> userEntities) {
-        List<UserDTO> usersList = userEntities.stream().map(
-                entity -> new UserDTO.Builder()
-                        .setDob(entity.getDob())
-                        .setEmail(entity.getEmail())
-                        .setFirstName(entity.getFirstName())
-                        .setGender(entity.getGender())
-                        .setId(entity.getId())
-                        .setLastName(entity.getLastName())
-                        .setPhoneNumber(entity.getPhoneNumber())
-                        .setUserName(entity.getUsername())
-                        .build())
-                .toList();
-        UserPageDTO res = new UserPageDTO();
-        res.setPageNumber(page);
-        res.setPageSize(size);
-        res.setTotalElements(userEntities.getTotalElements());
-        res.setTotalPages(userEntities.getTotalPages());
-        res.setUsers(usersList);
-        return res;
-    }
+    
 
     // used for controller
     @Override
@@ -109,10 +89,6 @@ public class UserServiceImpl implements UserService {
         return dto;
     }
 
-    // used for service
-    private UserEntity getUser(String id) {
-        return userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found"));
-    }
 
     @Override
     public UserDTO findByUsername(String username) {
@@ -137,7 +113,7 @@ public class UserServiceImpl implements UserService {
         user.setFirstName(req.getFirstName());
         user.setGender(req.getGender());
         user.setPhoneNumber(req.getPhoneNumber());
-        user.setStatus(req.getStatus().NONE);
+        user.setStatus(req.getStatus().ACTIVE);
         user.setType(req.getType());
         user.setCreatedAt(Instant.now());
         userRepository.save(user);
@@ -174,6 +150,34 @@ public class UserServiceImpl implements UserService {
         user.setStatus(UserStatus.INACTIVE);
         userRepository.save(user);
         log.info("Delete user successfully: {}", user);
+    }
+
+    // used for service
+    private UserEntity getUser(String id) {
+        return userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found"));
+    }
+
+    // configure the object to be returned to the controller
+    private UserPageDTO getUserPageDTO(int page, int size, Page<UserEntity> userEntities) {
+        List<UserDTO> usersList = userEntities.stream().map(
+                entity -> new UserDTO.Builder()
+                        .setDob(entity.getDob())
+                        .setEmail(entity.getEmail())
+                        .setFirstName(entity.getFirstName())
+                        .setGender(entity.getGender())
+                        .setId(entity.getId())
+                        .setLastName(entity.getLastName())
+                        .setPhoneNumber(entity.getPhoneNumber())
+                        .setUserName(entity.getUsername())
+                        .build())
+                .toList();
+        UserPageDTO res = new UserPageDTO();
+        res.setPageNumber(page);
+        res.setPageSize(size);
+        res.setTotalElements(userEntities.getTotalElements());
+        res.setTotalPages(userEntities.getTotalPages());
+        res.setUsers(usersList);
+        return res;
     }
 
 }

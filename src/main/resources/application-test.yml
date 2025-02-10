@@ -24,7 +24,7 @@ openapi:
     version: v1.1.0
 #    server: ${BACKEND-SERVICE:http://localhost:${server.post}}
     server: http://localhost:${server.port}
-    api-docs: social media
+    api-docs: socialmedia
 
 jwt:
     secretKey: test123

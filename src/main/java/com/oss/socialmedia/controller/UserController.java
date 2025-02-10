@@ -3,11 +3,11 @@ package com.oss.socialmedia.controller;
 import com.oss.socialmedia.controller.request.UserCreationRequest;
 import com.oss.socialmedia.controller.request.UserPasswordRequest;
 import com.oss.socialmedia.controller.request.UserUpdateRequest;
-import com.oss.socialmedia.controller.response.UserDTO;
 import com.oss.socialmedia.service.UserService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,9 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -56,7 +54,7 @@ public class UserController {
 
     @Operation(summary = "Users", description = "API create new user")
     @PostMapping("/add")
-    public ResponseEntity<Map<String, Object>> userCreation(@RequestBody UserCreationRequest user) {
+    public ResponseEntity<Map<String, Object>> userCreation(@Valid @RequestBody UserCreationRequest user) {
         Map<String, Object> map = new LinkedHashMap<>();
         map.put("Status", HttpStatus.OK.value());
         map.put("Message", "User created successfully");
@@ -66,7 +64,7 @@ public class UserController {
 
     @Operation(summary = "Users", description = "API update user")
     @PutMapping("/update")
-    public ResponseEntity<Map<String, Object>> updateUser(@RequestBody UserUpdateRequest req) {
+    public ResponseEntity<Map<String, Object>> updateUser(@Valid @RequestBody UserUpdateRequest req) {
         log.info("Update user: {}", req);
         userService.update(req);
         Map<String, Object> map = new LinkedHashMap<>();
@@ -78,7 +76,7 @@ public class UserController {
 
     @Operation(summary = "Users", description = "API change user password")
     @PatchMapping("/change-pwd")
-    public ResponseEntity<Map<String, Object>> changeUserPassword(@RequestBody UserPasswordRequest req) {
+    public ResponseEntity<Map<String, Object>> changeUserPassword(@Valid @RequestBody UserPasswordRequest req) {
         userService.changePassword(req);
         Map<String, Object> map = new LinkedHashMap<>();
         map.put("Status", HttpStatus.OK.value());

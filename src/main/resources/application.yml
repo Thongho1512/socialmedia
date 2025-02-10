@@ -17,10 +17,15 @@ logging:
   level:
     root: INFO
     web: INFO
+    org.springframework.web: DEBUG
+    org.springdoc: DEBUG
+
+
 
 openapi:
   service:
     title: Backend API document
     version: v1.1.0
     server: http://localhost:8080
+    
 

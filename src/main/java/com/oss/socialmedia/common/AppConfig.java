@@ -36,7 +36,8 @@ public class AppConfig {
                         "/v3/**",
                         "/webjars/**",
                         "/swagger-ui/**",
-                        "/swagger-ui.html");
+                        "/swagger-ui.html", 
+                        "/v3/api-docs/**");
     }
 
     @Bean
