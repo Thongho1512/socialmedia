@@ -92,14 +92,34 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO findByUsername(String username) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findByUsername'");
+        UserEntity user = userRepository.findByUsername(username);
+        UserDTO dto = new UserDTO.Builder()
+                .setDob(user.getDob())
+                .setEmail(user.getEmail())
+                .setFirstName(user.getFirstName())
+                .setGender(user.getGender())
+                .setId(user.getId())
+                .setLastName(user.getLastName())
+                .setPhoneNumber(user.getPhoneNumber())
+                .setUserName(user.getUsername())
+                .build();
+        return dto;
     }
 
     @Override
     public UserDTO findByEmail(String email) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findByEmail'");
+        UserEntity user = userRepository.findByUsername(email);
+        UserDTO dto = new UserDTO.Builder()
+                .setDob(user.getDob())
+                .setEmail(user.getEmail())
+                .setFirstName(user.getFirstName())
+                .setGender(user.getGender())
+                .setId(user.getId())
+                .setLastName(user.getLastName())
+                .setPhoneNumber(user.getPhoneNumber())
+                .setUserName(user.getUsername())
+                .build();
+        return dto;
     }
 
     @Override

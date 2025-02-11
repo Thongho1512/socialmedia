@@ -14,6 +14,7 @@ install jdk 21, maven 3.9.9, mongodb 8.0, intellij IDEA community edition 2024.2
 - Docker compose.
 - Webmvc-ui 2.6.0.
 - Spring web.
+- websocket reference https://www.unlogged.io/post/getting-started-with-websockets-in-springboot
 
 3. Build & Run application.
 - Run application by mvnw ar folder socialmedia.

@@ -6,11 +6,19 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import com.oss.socialmedia.common.MessageStatus;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Setter
 @Getter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Document(collection = "messages")
 public class MessageEntity {
 
@@ -20,16 +28,13 @@ public class MessageEntity {
     private String senderId;
     @Field("receiver_id")
     private String receiverId;
-    @Field("message_text")
-    private String messageText;
-    @Field("message_type")
-    private String messageType;
+    private String content;
+    @Field("status")
+    private MessageStatus status; // Type: The category of the message, like regular chat, joining a chat, or leaving.
     @Field("is_read")
     private Boolean isRead;
     @Field("created_at")
     private Instant createdAt;
-    @Field("updated_at")
-    private Instant updatedAt;
 
     // Getters and Setters
 }

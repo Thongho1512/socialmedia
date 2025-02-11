@@ -23,4 +23,6 @@ public interface UserRepository extends MongoRepository<UserEntity, String> {
             "{ 'email': { '$regex': ?0, '$options': 'i' } } " +
             "] }")
     Page<UserEntity> searchByKeyword(String keyword, Pageable pageable);
+    UserEntity findByUsername(String usrname);
+    UserEntity findByEmail(String email);
 }
