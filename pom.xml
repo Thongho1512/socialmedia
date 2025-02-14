@@ -147,6 +147,7 @@
 					</excludes>
 				</configuration>
 			</plugin>
+
 		</plugins>
 		<finalName>socialmedia</finalName>
 	</build>
