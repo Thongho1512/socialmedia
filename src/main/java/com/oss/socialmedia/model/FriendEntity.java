@@ -22,6 +22,4 @@ public class FriendEntity {
     private FriendStatus status;
     @Field("created_at")
     private Instant createdAt;
-    @Field("updated_at")
-    private Instant updatedAt;
 }

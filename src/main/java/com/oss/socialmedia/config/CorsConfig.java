@@ -12,7 +12,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 public class CorsConfig {
     @Bean 
     public CorsConfigurationSource corsConfigurationSource() { 
-    CorsConfiguration configuration = new CorsConfiguration(); 
+        CorsConfiguration configuration = new CorsConfiguration(); 
         configuration.setAllowedOrigins(Arrays.asList("http://127.0.0.1:5500"));         
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", 
         "OPTIONS")); // Allowed methods 
@@ -21,9 +21,8 @@ public class CorsConfig {
         configuration.setAllowCredentials(true); 
         configuration.setMaxAge(3600L); 
         // How long the response from a pre-flight request can be cached by clients 
-        UrlBasedCorsConfigurationSource source = new 
-        UrlBasedCorsConfigurationSource(); 
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource(); 
         source.registerCorsConfiguration("/**", configuration); // Apply this configuration to all paths 
-    return source; 
+        return source; 
     }
 }

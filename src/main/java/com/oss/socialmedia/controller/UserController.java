@@ -26,6 +26,7 @@ import java.util.Map;
 public class UserController {
     private final UserService userService;
 
+
     @Operation(summary = "users", description = "Fetch all users")
     @GetMapping("/list")
     public ResponseEntity<Map<String, Object>> getList(
