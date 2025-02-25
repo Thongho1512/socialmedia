@@ -14,34 +14,30 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 @Configuration
 public class AppConfig {
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(request -> request
-                        .requestMatchers("/**").permitAll()
-                        .anyRequest().authenticated())
+    // @Bean
+    // public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    //     http.csrf(AbstractHttpConfigurer::disable)
+    //             .authorizeHttpRequests(request -> request
+    //                     .requestMatchers("/**").permitAll()
+    //                     .anyRequest().authenticated())
 
-                .sessionManagement((SessionManagementConfigurer<HttpSecurity> manager) -> manager
-                        .sessionCreationPolicy(STATELESS));
+    //             .sessionManagement((SessionManagementConfigurer<HttpSecurity> manager) -> manager
+    //                     .sessionCreationPolicy(STATELESS));
 
-        return http.build();
-    }
+    //     return http.build();
+    // }
 
-    @Bean
-    public WebSecurityCustomizer ignoreResources() {
-        return webSecurity -> webSecurity
-                .ignoring()
-                .requestMatchers(
-                        "/actuator/**",
-                        "/v3/**",
-                        "/webjars/**",
-                        "/swagger-ui/**",
-                        "/swagger-ui.html", 
-                        "/v3/api-docs/**");
-    }
+    // @Bean
+    // public WebSecurityCustomizer ignoreResources() {
+    //     return webSecurity -> webSecurity
+    //             .ignoring()
+    //             .requestMatchers(
+    //                     "/actuator/**",
+    //                     "/v3/**",
+    //                     "/webjars/**",
+    //                     "/swagger-ui/**",
+    //                     "/swagger-ui.html", 
+    //                     "/v3/api-docs/**");
+    // }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 }

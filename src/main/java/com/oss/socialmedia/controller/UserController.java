@@ -19,7 +19,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/v1/users")
 @Tag(name = "User controller")
 @Slf4j(topic = "USER-CONTROLLER")
 @RequiredArgsConstructor
